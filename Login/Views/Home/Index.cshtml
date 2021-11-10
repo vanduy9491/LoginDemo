@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@inject SignInManager<User> signInManager
+@{
+    var user = new User();
+    if (signInManager.IsSignedIn(User))
+    {
+        user = signInManager.UserManager.FindByNameAsync(User.Identity.Name).Result;
+    }
+    //var avatar = user.Avatar ?? "/Images/avatars/6-small.png";
+}
+
+
+ <h1>Xin chào @User.Identity.Name</h1>
+  
